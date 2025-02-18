@@ -105,3 +105,8 @@
 .btn-enviar:hover {
     background-color: #0056b3;
 }
+#skillT{
+text-transform: capitalize;
+font-weight: bold;
+color: rgb(49, 82, 172);
+}

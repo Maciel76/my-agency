@@ -606,3 +606,7 @@ footer {
         flex-direction: column;
     }
 }
+#logoName a{
+    text-decoration: none;
+    list-style: none;
+}
