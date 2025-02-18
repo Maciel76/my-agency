@@ -1,5 +1,6 @@
 :root {
     --primary-color: #0052FF;
+    --altenative-color: #2041d1;
     --text-color: #333;
     --bg-color: #fff;
     --gray-color: #666;
@@ -372,7 +373,7 @@ nav {
 }
 
 .testimonial-card.active {
-    background: var(--primary-color);
+    background: var(--altenative-color);
     color: white;
 }
 
