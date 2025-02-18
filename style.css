@@ -154,8 +154,9 @@ nav {
 
 .stat-card {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem;
     background-color: #f8f9fa;
+    border-radius: 10px;
 }
 
 .stat-card h2 {

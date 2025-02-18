@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisyphus Blog - Creative Agency Insights</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body class="blog-page">
+    <header class="blog-header">
+        <nav>
+            <div class="logo">
+                <img src="https://api.iconify.design/heroicons:bolt.svg" alt="Bolt icon" class="logo-icon">
+                <span>Sisyphus</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search articles..." id="searchInput">
+                <button class="search-button">
+                    <img src="https://api.iconify.design/heroicons:magnifying-glass.svg" alt="Search">
+                </button>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle">
+                    <img src="https://api.iconify.design/heroicons:moon.svg" alt="Theme" class="theme-icon">
+                </button>
+                <button class="cta-button">Subscribe</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="blog-main">
+        <section class="featured-post">
+            <div class="featured-content">
+                <div class="post-meta">
+                    <span class="category">Design Trends</span>
+                    <span class="date">March 15, 2024</span>
+                </div>
+                <h1>The Future of Digital Design: AI and Human Creativity</h1>
+                <p>Explore how artificial intelligence is reshaping the landscape of digital design while enhancing human creativity rather than replacing it.</p>
+                <a href="blog-post.html" class="cta-button">Read Article</a>
+            </div>
+            <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb" alt="AI and Design" loading="lazy">
+            </div>
+        </section>
+
+        <div class="blog-content">
+            <section class="latest-posts">
+                <h2>Latest Articles</h2>
+                <div class="post-grid" id="postGrid">
+                    <!-- Posts will be loaded dynamically via JavaScript -->
+                </div>
+            </section>
+
+            <aside class="blog-sidebar">
+                <div class="sidebar-section categories">
+                    <h3>Categories</h3>
+                    <ul id="categoryList">
+                        <li><a href="#" data-category="all" class="active">All Posts</a></li>
+                        <li><a href="#" data-category="design">Design</a></li>
+                        <li><a href="#" data-category="development">Development</a></li>
+                        <li><a href="#" data-category="business">Business</a></li>
+                        <li><a href="#" data-category="technology">Technology</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section popular-posts">
+                    <h3>Popular Posts</h3>
+                    <div class="popular-post-list">
+                        <a href="#" class="popular-post">
+                            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb" alt="Popular post" loading="lazy">
+                            <div>
+                                <h4>Design Systems in 2024</h4>
+                                <span>March 12, 2024</span>
+                            </div>
+                        </a>
+                        <a href="#" class="popular-post">
+                            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb" alt="Popular post" loading="lazy">
+                            <div>
+                                <h4>The Rise of No-Code Tools</h4>
+                                <span>March 10, 2024</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section tags">
+                    <h3>Popular Tags</h3>
+                    <div class="tag-cloud">
+                        <a href="#" class="tag">Design</a>
+                        <a href="#" class="tag">UI/UX</a>
+                        <a href="#" class="tag">Development</a>
+                        <a href="#" class="tag">Branding</a>
+                        <a href="#" class="tag">Technology</a>
+                        <a href="#" class="tag">AI</a>
+                        <a href="#" class="tag">Web3</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <div id="footer"></div>
+    <script src="../public/router/main.js"></script> 
+
+    <script src="blog.js"></script>
+</body>
+</html>
