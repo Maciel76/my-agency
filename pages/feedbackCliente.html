@@ -4,15 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback do Cliente</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="stilo.css">
 </head>
 <body>
     <div id="header"></div>
-    <main> <br>
-        <h2>Avaliação de Clientes</h2>
-        <br>
-    </main>
+    <section id="avaliacoes" class="avaliacoes-section">
+        <div class="container">
+            <h2 class="section-title">O que nossos clientes dizem</h2>
+            <div class="avaliacoes-grid">
+                <!-- Avaliação 1 -->
+                <div class="avaliacao-card">
+                    <div class="avaliacao-content">
+                        <p class="avaliacao-texto">"A equipe da [Nome da Agência] foi incrível! Eles entenderam exatamente o que precisávamos e entregaram um site moderno e funcional. Recomendo a todos que buscam qualidade e profissionalismo."</p>
+                        <div class="avaliacao-autor">
+                            <img src="caminho/para/foto-cliente1.jpg" alt="Foto do Cliente 1" class="autor-foto">
+                            <div class="autor-info">
+                                <h4 class="autor-nome">João Silva</h4>
+                                <p class="autor-empresa">CEO da Empresa X</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Avaliação 2 -->
+                <div class="avaliacao-card">
+                    <div class="avaliacao-content">
+                        <p class="avaliacao-texto">"Fiquei impressionado com a atenção aos detalhes e o suporte pós-entrega. Nosso site não só ficou lindo, mas também aumentou nossas conversões. Parabéns pelo excelente trabalho!"</p>
+                        <div class="avaliacao-autor">
+                            <img src="caminho/para/foto-cliente2.jpg" alt="Foto do Cliente 2" class="autor-foto">
+                            <div class="autor-info">
+                                <h4 class="autor-nome">Maria Souza</h4>
+                                <p class="autor-empresa">Fundadora da Startup Y</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Avaliação 3 -->
+                <div class="avaliacao-card">
+                    <div class="avaliacao-content">
+                        <p class="avaliacao-texto">"Trabalhar com a [Nome da Agência] foi uma experiência incrível. Eles são rápidos, eficientes e sempre abertos a feedback. Nosso site superou todas as expectativas!"</p>
+                        <div class="avaliacao-autor">
+                            <img src="caminho/para/foto-cliente3.jpg" alt="Foto do Cliente 3" class="autor-foto">
+                            <div class="autor-info">
+                                <h4 class="autor-nome">Carlos Oliveira</h4>
+                                <p class="autor-empresa">Diretor da Empresa Z</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Formulário para nova avaliação -->
+            <div class="nova-avaliacao">
+                <h3 class="form-title">Deixe sua avaliação</h3>
+                <form id="form-avaliacao" class="avaliacao-form">
+                    <div class="form-group">
+                        <label for="nome">Seu Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Sua Empresa:</label>
+                        <input type="text" id="empresa" name="empresa">
+                    </div>
+                    <div class="form-group">
+                        <label for="avaliacao">Sua Avaliação:</label>
+                        <textarea id="avaliacao" name="avaliacao" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Enviar Foto (opcional):</label>
+                        <input type="file" id="foto" name="foto" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn-enviar">Enviar Avaliação</button>
+                </form>
+            </div>
+        </div>
+    </section>
     <div id="footer"></div>
-    <script src="/public/router/main.js"></script> 
+    <script src="../public/router/main.js"></script> 
 </body>
 </html>
