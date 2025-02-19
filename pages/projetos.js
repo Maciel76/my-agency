@@ -28,7 +28,7 @@ const projects = [
         title: "E-commerce Platform Redesign",
         category: "websites",
         description: "Complete redesign and development of a modern e-commerce platform focusing on user experience and conversion optimization.",
-        image: "https://images.unsplash.com/photo-1625036790671-0d11ed8a7927",
+        image: "https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXBwfGVufDB8fDB8fHww",
         technologies: ["React", "Node.js", "MongoDB", "AWS"],
         client: "TechStore Inc.",
         duration: "4 months",
@@ -48,11 +48,34 @@ const projects = [
     },
     {
         id: 2,
-        title: "Mobile Banking App",
+        title: "E-commerce Platform Redesign",
+        category: "websites",
+        description: "Complete redesign and development of a modern e-commerce platform focusing on user experience and conversion optimization.",
+        image: "https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXBwfGVufDB8fDB8fHww",
+        technologies: ["React", "Node.js", "MongoDB", "AWS"],
+        client: "TechStore Inc.",
+        duration: "4 months",
+        year: "2024",
+        gallery: [
+            "https://images.unsplash.com/photo-1625036790671-0d11ed8a7927",
+            "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8",
+            "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e",
+            "https://images.unsplash.com/photo-1611162617474-5b21e879e113"
+        ],
+        testimonial: {
+            content: "The team at Sisyphus delivered beyond our expectations. The new platform has significantly improved our conversion rates and customer satisfaction.",
+            author: "John Smith",
+            position: "CEO, TechStore Inc.",
+            avatar: "https://api.iconify.design/ph:user-circle.svg"
+        }
+    },
+    {
+        id: 3,
+        title: "Planejamento Estratégico",
         category: "apps",
         description: "Modern banking application with focus on security and user experience.",
-        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8",
-        technologies: ["React Native", "Node.js", "PostgreSQL", "Firebase"],
+        image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        technologies: ["html-5", "css-3", "javascript", "nodejs", "vue"],
         client: "Global Bank",
         duration: "6 months",
         year: "2024",
@@ -60,13 +83,14 @@ const projects = [
             "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8",
             "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e",
             "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
-            "https://images.unsplash.com/photo-1625036790671-0d11ed8a7927"
+            "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8",
+            
         ],
         testimonial: {
             content: "Outstanding work on our mobile banking app. The attention to detail and security measures implemented are impressive.",
             author: "Sarah Johnson",
             position: "CTO, Global Bank",
-            avatar: "https://api.iconify.design/ph:user-circle.svg"
+            avatar: "../public/img/user3.png"
         }
     }
 ];
