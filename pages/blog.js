@@ -1,62 +1,16 @@
-// Theme Toggle
-const themeToggle = document.getElementById('themeToggle');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+// Load posts from localStorage
+const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
 
-// Check for saved theme preference or use system preference
-const savedTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
-document.documentElement.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
-
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-});
-
-function updateThemeIcon(theme) {
-    const icon = themeToggle.querySelector('img');
-    icon.src = `https://api.iconify.design/heroicons:${theme === 'light' ? 'moon' : 'sun'}.svg`;
-}
-
-// Blog Posts Data
-const blogPosts = [
-    {
-        id: 1,
-        title: 'The Evolution of UI Design',
-        excerpt: 'Exploring how user interface design has transformed over the years and what the future holds.',
-        image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb',
-        category: 'design',
-        date: 'March 14, 2024'
-    },
-    {
-        id: 2,
-        title: 'Building Scalable Web Applications',
-        excerpt: 'Best practices and patterns for creating maintainable and scalable web applications.',
-        image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb',
-        category: 'development',
-        date: 'March 13, 2024'
-    },
-    {
-        id: 3,
-        title: 'The Impact of AI on Design',
-        excerpt: 'How artificial intelligence is reshaping the design industry and empowering creators.',
-        image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb',
-        category: 'technology',
-        date: 'March 12, 2024'
-    }
-];
-
-// Load Blog Posts
-function loadPosts(posts = blogPosts) {
+// Load posts into the grid
+function loadPosts(postsToLoad = posts) {
     const postGrid = document.getElementById('postGrid');
     if (!postGrid) return;
 
-    postGrid.innerHTML = posts.map(post => `
+    const publishedPosts = postsToLoad.filter(post => post.status === 'published');
+
+    postGrid.innerHTML = publishedPosts.map(post => `
         <article class="post-card">
-            <img src="${post.image}" alt="${post.title}" loading="lazy">
+            <img src="${post.featuredImage}" alt="${post.title}" loading="lazy">
             <div class="post-card-content">
                 <div class="post-meta">
                     <span class="category">${post.category}</span>
@@ -64,112 +18,135 @@ function loadPosts(posts = blogPosts) {
                 </div>
                 <h3>${post.title}</h3>
                 <p>${post.excerpt}</p>
-                <a href="blog-post.html" class="learn-more">Read More →</a>
+                <a href="blog-post.html?id=${post.id}" class="learn-more">Read More →</a>
             </div>
         </article>
     `).join('');
 }
 
-// Search Functionality
-const searchInput = document.getElementById('searchInput');
-if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const filteredPosts = blogPosts.filter(post => 
-            post.title.toLowerCase().includes(searchTerm) ||
-            post.excerpt.toLowerCase().includes(searchTerm)
-        );
-        loadPosts(filteredPosts);
-    });
+// Load single post
+function loadSinglePost() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = parseInt(urlParams.get('id'));
+    
+    if (!postId) return;
+
+    const post = posts.find(p => p.id === postId);
+    if (!post) return;
+
+    // Update page title
+    document.title = `${post.title} - Sisyphus Blog`;
+
+    // Update post content
+    const postContent = document.querySelector('.post-content');
+    if (postContent) {
+        const postHeader = postContent.querySelector('.post-header');
+        if (postHeader) {
+            postHeader.innerHTML = `
+                <div class="post-meta">
+                    <span class="category">${post.category}</span>
+                    <span class="date">${post.date}</span>
+                </div>
+                <h1>${post.title}</h1>
+                <div class="author-info">
+                    <img src="https://api.iconify.design/ph:user-circle.svg" alt="Author" class="author-avatar">
+                    <div>
+                        <h3>${post.author}</h3>
+                        <p>Lead Designer at Sisyphus</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        const postBody = postContent.querySelector('.post-body');
+        if (postBody) {
+            postBody.innerHTML = `
+                <img src="${post.featuredImage}" alt="${post.title}" class="post-hero-image">
+                ${post.content}
+            `;
+        }
+
+        // Update tags
+        const tagsContainer = postContent.querySelector('.tags');
+        if (tagsContainer && post.tags) {
+            tagsContainer.innerHTML = post.tags.map(tag => `
+                <a href="#" class="tag">${tag}</a>
+            `).join('');
+        }
+    }
+
+    // Load related posts
+    loadRelatedPosts(post);
 }
 
-// Category Filter
-const categoryLinks = document.querySelectorAll('[data-category]');
-categoryLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const category = e.target.dataset.category;
-        
-        // Update active state
-        categoryLinks.forEach(l => l.classList.remove('active'));
-        e.target.classList.add('active');
+// Load related posts
+function loadRelatedPosts(currentPost) {
+    const relatedPosts = posts
+        .filter(post => 
+            post.status === 'published' && 
+            post.id !== currentPost.id && 
+            (post.category === currentPost.category || 
+             post.tags.some(tag => currentPost.tags.includes(tag)))
+        )
+        .slice(0, 3);
 
-        // Filter posts
-        const filteredPosts = category === 'all' 
-            ? blogPosts 
-            : blogPosts.filter(post => post.category === category);
-        loadPosts(filteredPosts);
-    });
-});
-
-// Comments System
-const commentForm = document.getElementById('commentInput');
-const submitComment = document.getElementById('submitComment');
-const commentsList = document.getElementById('commentsList');
-
-if (commentForm && submitComment && commentsList) {
-    // Load existing comments from localStorage
-    let comments = JSON.parse(localStorage.getItem('blogComments') || '[]');
-    renderComments();
-
-    submitComment.addEventListener('click', () => {
-        const commentText = commentForm.value.trim();
-        if (!commentText) return;
-
-        const newComment = {
-            id: Date.now(),
-            text: commentText,
-            author: 'Anonymous User',
-            date: new Date().toLocaleDateString()
-        };
-
-        comments.unshift(newComment);
-        localStorage.setItem('blogComments', JSON.stringify(comments));
-        
-        commentForm.value = '';
-        renderComments();
-    });
-
-    function renderComments() {
-        commentsList.innerHTML = comments.map(comment => `
-            <div class="comment">
-                <img src="https://api.iconify.design/ph:user-circle.svg" alt="User" class="user-avatar">
-                <div class="comment-content">
-                    <h4>${comment.author}</h4>
-                    <span class="date">${comment.date}</span>
-                    <p>${comment.text}</p>
+    const relatedPostsGrid = document.querySelector('.related-posts .post-grid');
+    if (relatedPostsGrid) {
+        relatedPostsGrid.innerHTML = relatedPosts.map(post => `
+            <article class="post-card">
+                <img src="${post.featuredImage}" alt="${post.title}" loading="lazy">
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span class="category">${post.category}</span>
+                        <span class="date">${post.date}</span>
+                    </div>
+                    <h3>${post.title}</h3>
+                    <p>${post.excerpt}</p>
+                    <a href="blog-post.html?id=${post.id}" class="learn-more">Read More →</a>
                 </div>
-            </div>
+            </article>
         `).join('');
     }
 }
 
 // Initialize the blog
 document.addEventListener('DOMContentLoaded', () => {
-    loadPosts();
-});
+    // Check if we're on a single post page
+    if (window.location.pathname.includes('blog-post.html')) {
+        loadSinglePost();
+    } else {
+        loadPosts();
+    }
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+    // Initialize search
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredPosts = posts.filter(post => 
+                post.title.toLowerCase().includes(searchTerm) ||
+                post.content.toLowerCase().includes(searchTerm)
+            );
+            loadPosts(filteredPosts);
         });
-    });
-});
+    }
 
-// Share Buttons
-const shareButtons = document.querySelectorAll('.share-button');
-shareButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const url = encodeURIComponent(window.location.href);
-        const text = encodeURIComponent(document.title);
-        
-        if (button.classList.contains('twitter')) {
-            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
-        } else if (button.classList.contains('linkedin')) {
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
-        }
+    // Initialize category filter
+    const categoryLinks = document.querySelectorAll('[data-category]');
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const category = e.target.dataset.category;
+            
+            // Update active state
+            categoryLinks.forEach(l => l.classList.remove('active'));
+            e.target.classList.add('active');
+
+            // Filter posts
+            const filteredPosts = category === 'all' 
+                ? posts 
+                : posts.filter(post => post.category === category);
+            loadPosts(filteredPosts);
+        });
     });
 });

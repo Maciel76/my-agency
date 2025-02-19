@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisyphus - Our Projects</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="projetos.css">
+</head>
+<body class="projects-page">
+    <header class="projects-header">
+        <nav>
+            <div class="logo">
+                <img src="https://api.iconify.design/heroicons:bolt.svg" alt="Bolt icon" class="logo-icon">
+                <span>Sisyphus</span>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle">
+                    <img src="https://api.iconify.design/heroicons:moon.svg" alt="Theme" class="theme-icon">
+                </button>
+                <button class="cta-button">Start Project</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="projects-main">
+        <section class="projects-hero">
+            <h1>Our <span class="highlight">Projects</span></h1>
+            <p>Discover our portfolio of successful projects and creative solutions</p>
+            
+            <div class="project-filters">
+                <button class="filter-button active" data-category="all">All Projects</button>
+                <button class="filter-button" data-category="websites">Websites</button>
+                <button class="filter-button" data-category="apps">Applications</button>
+                <button class="filter-button" data-category="branding">Branding</button>
+                <button class="filter-button" data-category="design">UI/UX Design</button>
+            </div>
+        </section>
+
+        <section class="projects-grid" id="projectsGrid">
+            <!-- Projects will be loaded dynamically -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="https://api.iconify.design/heroicons:bolt.svg" alt="Bolt icon" class="logo-icon">
+                    <span>Sisyphus</span>
+                </div>
+                <p>Empowered to do work, giving creativity<br>A Symphony of Innovation</p>
+                <div class="social-links">
+                    <a href="#"><img src="https://api.iconify.design/simple-icons:facebook.svg" alt="Facebook"></a>
+                    <a href="#"><img src="https://api.iconify.design/simple-icons:twitter.svg" alt="Twitter"></a>
+                    <a href="#"><img src="https://api.iconify.design/simple-icons:instagram.svg" alt="Instagram"></a>
+                    <a href="#"><img src="https://api.iconify.design/simple-icons:linkedin.svg" alt="LinkedIn"></a>
+                    <a href="#"><img src="https://api.iconify.design/simple-icons:youtube.svg" alt="YouTube"></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Our Sites</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal Info</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>+62 (545) 343 6598</li>
+                        <li>hello@sisyphus.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Sisyphus. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="projetos.js"></script>
+</body>
+</html>
