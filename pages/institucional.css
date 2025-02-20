@@ -1,0 +1,242 @@
+/* Institutional Pages Styles */
+:root {
+    --inst-bg: #ffffff;
+    --inst-text: #1A1D1F;
+    --inst-gray: #666666;
+    --inst-light-gray: #f8f9fa;
+    --inst-primary: #0052FF;
+    --inst-secondary: #E5E7EB;
+    --inst-accent: #FFD60A;
+    --inst-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+    --inst-bg: #1A1D1F;
+    --inst-text: #ffffff;
+    --inst-gray: #9CA3AF;
+    --inst-light-gray: #2D3748;
+    --inst-secondary: #4A5568;
+    --inst-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.institutional-page {
+    background-color: var(--inst-bg);
+    color: var(--inst-text);
+}
+
+/* Header */
+.institutional-header {
+    padding: 1.5rem 5%;
+    border-bottom: 1px solid var(--inst-secondary);
+}
+
+.institutional-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Hero Section */
+.institutional-hero {
+    text-align: center;
+    padding: 4rem 5%;
+    background: var(--inst-light-gray);
+}
+
+.institutional-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.institutional-hero p {
+    color: var(--inst-gray);
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Content Section */
+.institutional-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 5%;
+}
+
+.content-section {
+    margin-bottom: 4rem;
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--inst-gray);
+    margin-bottom: 1.5rem;
+}
+
+/* Mission Cards */
+.mission-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.mission-card {
+    background: var(--inst-light-gray);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.mission-card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.5rem;
+}
+
+.mission-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Team Section */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.team-member h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-member p {
+    color: var(--inst-gray);
+    font-size: 0.9rem;
+}
+
+/* Event Section */
+.event-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.event-feature {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.event-feature img {
+    width: 48px;
+    height: 48px;
+}
+
+/* Legal Content */
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.legal-content h2 {
+    font-size: 2rem;
+    margin: 2rem 0 1rem;
+}
+
+.legal-content h3 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.legal-content p,
+.legal-content ul {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.legal-content ul {
+    padding-left: 2rem;
+}
+
+.legal-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--inst-primary);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: none;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+}
+
+.back-to-top img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .mission-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .event-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .institutional-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .mission-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
