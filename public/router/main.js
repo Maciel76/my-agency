@@ -9,3 +9,6 @@
 // Carregar o header e footer
 loadComponent("header", "header.html");
 loadComponent("footer", "footer.html");
+loadComponent("SecPortifolio", "SecPortifolio.html");
+loadComponent("secavalia", "secavalia.html");
+loadComponent("contact", "contact.html");
