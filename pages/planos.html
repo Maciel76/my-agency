@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos e Preços - Skill Technology</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="planos.css">
+</head>
+<body class="pricing-page">
+    <header class="pricing-header">
+        <nav>
+            <a href="../index.html" class="logo">
+                <img src="../public/img/logo.svg" alt="Bolt icon" class="logo-icon">
+                <span>Skill Technology</span>
+            </a>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle">
+                    <img src="https://api.iconify.design/heroicons:moon.svg" alt="Theme" class="theme-icon">
+                </button>
+                <button class="cta-button">Entre em Contato</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="pricing-hero">
+            <h1>Planos e <span class="highlight">Preços</span></h1>
+            <p>Escolha o plano ideal para o seu projeto</p>
+        </section>
+
+        <section class="pricing-categories" id="pricingCategories">
+            <button class="category-button active" data-category="websites">
+                <img src="https://api.iconify.design/heroicons:globe-alt.svg" alt="Websites">
+                Websites
+            </button>
+            <button class="category-button" data-category="apps">
+                <img src="https://api.iconify.design/heroicons:device-phone-mobile.svg" alt="Apps">
+                Aplicativos
+            </button>
+            <button class="category-button" data-category="design">
+                <img src="https://api.iconify.design/heroicons:paint-brush.svg" alt="Design">
+                UI/UX Design
+            </button>
+            <button class="category-button" data-category="illustration">
+                <img src="https://api.iconify.design/heroicons:pencil.svg" alt="Ilustração">
+                Ilustração
+            </button>
+            <button class="category-button" data-category="ecommerce">
+                <img src="https://api.iconify.design/heroicons:shopping-cart.svg" alt="E-commerce">
+                E-commerce
+            </button>
+            <button class="category-button" data-category="consultoria">
+                <img src="https://api.iconify.design/heroicons:chat-bubble-left-right.svg" alt="Consultoria">
+                Consultoria
+            </button>
+        </section>
+
+        <section class="pricing-plans" id="pricingPlans">
+            <!-- Plans will be loaded dynamically -->
+        </section>
+    </main>
+
+    <!-- Modal for Plan Details -->
+    <div class="modal" id="planModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-body" id="modalContent">
+                <!-- Modal content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+        <!-- Seção de Portfólio -->
+        <div id="SecPortifolio"></div>
+<!-- ================================================ -->
+        <!-- Seção de Depoimentos -->
+         <div id="secavalia"></div>
+
+<!-- ================================================ -->
+        
+    <div id="footer"></div>
+    <script src="../public/router/main.js"></script> 
+
+    <script src="planos.js"></script>
+</body>
+</html>
